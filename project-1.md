@@ -240,7 +240,7 @@ This role will allow our EC2 to communicate with content inside of S3 buckets.
 - Ensure subnet and routing configurations support their roles (internet for public, no internet for private)
 -----
 
-**🔐 Phase 4: SSH Access from Terminal**
+**🔐 Phase 5: SSH Access from Terminal**
 
 - From your local terminal, SSH into the bastion EC2 using the .pem key. Refer to your EC2 SSH Client
 ```
@@ -276,7 +276,7 @@ ip addr
 - Go to your admin user account and create the policy from there to allow access to EC2Instance connect
 -----
 
-**🌐 Phase 5: Apache & Static Website with EC2 and S3**
+**🌐 Phase 6: Apache & Static Website with EC2 and S3**
 
 - Install Apache HTTP server on the public EC2 instance using EC2 Instance Connect
 ```
@@ -370,22 +370,45 @@ We can also host a static website on S3. Upload your index.html to your bucket. 
       "access-analyzer:ValidatePolicy"
     ],
     "Resource": "*"
-    }
+    },
+     {
+     "Effect": "Allow",
+     "Action": [
+       "ec2-instance-connect:SendSSHPublicKey",
+       "ec2:DescribeInstances",
+       "ec2:GetConsoleOutput",
+       "ec2:DescribeInstanceStatus"
+       
+     ],
+     "Resource": "*"
+   }
   ]
   }
-
-#dev-ops permission to SSH into EC2 instance connect
-{
-  "Effect": "Allow",
-  "Action": [
-    "ec2-instance-connect:SendSSHPublicKey",
-    "ec2:DescribeInstances",
-    "ec2:GetConsoleOutput",
-    "ec2:DescribeInstanceStatus"
-    
-  ],
-  "Resource": "*"
-}
 ```
+```
+**🛑 Phase 7: Controlled Shutdown by Secondary IAM User**
+
+- After completing all phases, a new IAM user (not the devops-user) must perform a shutdown procedure
+- This user (ops-user) should only be added to the ComputeEngineer IAM group by the Admin
+
+![Screenshot 2025-06-17 001333](https://github.com/user-attachments/assets/737c493d-bc6a-4f0f-9c01-161cb468b70e)
+
+---
+- The Admin must generate and share a new AWS CLI access key for this ops-user together with the sign-in credentials.
+- The ops-user must:
+  - Configure AWS CLI locally using aws configure
+  - Verify limited permission to ONLY EC2 operations
+  - Obtain the correct .pem file to SSH into the bastion EC2 instance
+  - SSH into the bastion and from there into the private EC2
+  - Use aws ec2 stop-instances command to stop both instances from the terminal only
+  - Use aws ec2 describe-instance-status to verify shutdown success
+
+![Screenshot 2025-06-17 001536](https://github.com/user-attachments/assets/0fcb9842-8a27-4681-82e7-38d44739c0aa)
+![Screenshot 2025-06-17 001933](https://github.com/user-attachments/assets/c40c2804-6b1c-4be2-a075-108644e2bc2c)
+![Screenshot 2025-06-17 001956](https://github.com/user-attachments/assets/47f5be3b-2e35-4ab3-9c4a-320349018420)
+![Screenshot 2025-06-17 125330](https://github.com/user-attachments/assets/77811efc-8abe-41ad-ba83-f6a1b8fcc555)
+![Screenshot 2025-06-17 002043](https://github.com/user-attachments/assets/36342df1-7777-4605-8df3-699d08a7d10e)
+![Screenshot 2025-06-17 125350](https://github.com/user-attachments/assets/fba52319-a6b1-47ee-8879-6716e03d7079)
+
+
 -----
-bhjpb
