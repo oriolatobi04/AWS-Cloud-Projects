@@ -274,6 +274,18 @@ ip addr
 
 - You will notice that you cannot access EC2 instance connect due to permission
 - Go to your admin user account and create the policy from there to allow access to EC2Instance connect
+```
+{
+  "Effect": "Allow",
+  "Action": [
+    "ec2-instance-connect:SendSSHPublicKey",
+    "ec2:DescribeInstances",
+    "ec2:GetConsoleOutput",
+    "ec2:DescribeInstanceStatus"
+  ],
+  "Resource": "*"
+}
+```
 -----
 
 **🌐 Phase 6: Apache & Static Website with EC2 and S3**
@@ -370,18 +382,7 @@ We can also host a static website on S3. Upload your index.html to your bucket. 
       "access-analyzer:ValidatePolicy"
     ],
     "Resource": "*"
-    },
-     {
-     "Effect": "Allow",
-     "Action": [
-       "ec2-instance-connect:SendSSHPublicKey",
-       "ec2:DescribeInstances",
-       "ec2:GetConsoleOutput",
-       "ec2:DescribeInstanceStatus"
-       
-     ],
-     "Resource": "*"
-   }
+    }
   ]
   }
 ```
