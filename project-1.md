@@ -4,6 +4,4 @@
 
 ## 🔐 Phase 0: IAM Governance & Role Delegation
 👑 Admin User Setup
-
-
-# RRR
+![Screenshot 2025-06-16 125231](https://github.com/user-attachments/assets/9d429bd5-b793-473a-aa39-9a2f2b7446a8)
