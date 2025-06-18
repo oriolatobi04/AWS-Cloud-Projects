@@ -1,6 +1,6 @@
 #  🛡️ Full-Scale AWS Infrastructure Deployment with IAM Control, Networking, Bastion Host & S3 Integration
 
- This comprehensive hands-on project is designed to simulate the planning, deployment, access control, and secure operation of an AWS-based infrastructure, following enterprise-level best practices. It begins with IAM governance to ensure correct role-based access and builds out a robust VPC environment with public and private subnets, EC2 provisioning, EC2 & S3-hosted content, and SSH-based bastion access. This project provides a step-by-step guide with interactive images of how this can be achieved.
+This comprehensive project is designed to simulate the planning, deployment, access control and secure operation of an AWS-based infrastructure. It begins with IAM governance to ensure correct role-based access and builds out a robust VPC environment with public and private subnets, EC2 provisioning, A static website hosted on Public EC2 instance and S3, SSH-based bastion access to connect private and public instance. This project provides a step-by-step guide with screenshots to follow along with.
 
 ## 🔐 Phase 0: IAM Governance & Role Delegation
 ### 👑 Admin User Setup
@@ -395,14 +395,9 @@ We can also host a static website on S3. Upload your index.html to your bucket. 
 ![Screenshot 2025-06-17 001333](https://github.com/user-attachments/assets/737c493d-bc6a-4f0f-9c01-161cb468b70e)
 
 ---
-- The Admin must generate and share a new AWS CLI access key for this ops-user together with the sign-in credentials.
+- The Admin must generate and share the sign-in credentials for this ops-user
 - The ops-user must:
-  - Configure AWS CLI locally using aws configure
-  - Verify limited permission to ONLY EC2 operations
-  - Obtain the correct .pem file to SSH into the bastion EC2 instance
-  - SSH into the bastion and from there into the private EC2
-  - Use aws ec2 stop-instances command to stop both instances from the terminal only
-  - Use aws ec2 describe-instance-status to verify shutdown success
+- Perform a routine shutdown across all resources that was used in this project from the console
 
 ![Screenshot 2025-06-17 001536](https://github.com/user-attachments/assets/0fcb9842-8a27-4681-82e7-38d44739c0aa)
 ![Screenshot 2025-06-17 001933](https://github.com/user-attachments/assets/c40c2804-6b1c-4be2-a075-108644e2bc2c)
@@ -413,3 +408,25 @@ We can also host a static website on S3. Upload your index.html to your bucket. 
 
 
 -----
+I hope this was helpful. Now we can conviniently;
+- Create a user and assign them to any groups
+- Attach policy to a group virtually or using JSON
+- Create and Manage standalone role and attach it to any resources
+- Clearly see that we are only able to do what we are given permission for
+- Create AWS CLI credential for local terminal to access our account
+- Create custom VPC and route subnets to the public or isolate them
+- Edit iniline-policies to allow new users access resources
+- Create public and private instances with custom security groups
+- Modify IAM role in EC2 to allow access from other resources
+- Create key pair and ssh into our local terminal
+- Copy files into our EC2 home
+- Connect our private EC2 with our public EC2 - Bastion host
+- Install Apache web server on our terminal and create an index.html file
+- Deploy our website and access it from our public IP
+- Create buckets, upload images and list this bucket in our terminal
+- Also host a static website on our S3 and access it via the provided object address
+- Shutdown resources that are created
+
+----
+
+Thank you!
