@@ -26,7 +26,7 @@ An AWS Admin user (with AdministratorAccess) is responsible for creating and man
 
 ![Screenshot 2025-06-16 130420](https://github.com/user-attachments/assets/360e4eb2-8d7a-41ca-b999-05b354143d79)
 
-The MFA is authenticated with using your device. This is required when you are logging in to your devops-user account
+The MFA is authenticated with your device. This is required when you are logging in to your devops-user account
 
 ![Screenshot 2025-06-16 130442](https://github.com/user-attachments/assets/6802de77-cf7c-479c-b067-f07cfca05a32)
 
