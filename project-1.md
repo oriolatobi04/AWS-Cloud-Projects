@@ -209,7 +209,7 @@ This role will allow our EC2 to communicate with content inside of S3 buckets.
 - Launch a public EC2 instance (bastion host) in one of the public subnets
 - Launch a private EC2 instance in one of the private subnets (You can use launch more like this after one instance is created)
   
-![Screenshot 2025-06-16 154407](https://github.com/user-attachments/assets/4778c6b6-8b1b-44c4-9ebe-54187eb6a084)
+![Screenshot 2025-06-16 154624](https://github.com/user-attachments/assets/ba72041f-35d5-4417-9cd3-17ee70c235af)
 
 ---
  
@@ -232,7 +232,7 @@ This role will allow our EC2 to communicate with content inside of S3 buckets.
  ![Screenshot 2025-06-16 154320](https://github.com/user-attachments/assets/00dc57e9-32dd-4285-bee7-55940ff17510)
 
 ---
-- Assign IAM roles as required for the public instance. After launching the instances, go to the EC2 console, select the public instance, and choose 'Actions' → 'Security' → 'Modify IAM Role' to attach the previously created IAM role to the instance.
+- Assign IAM roles as required for the public instance. After launching the instances, go to the EC2 console, select the public instance, and choose 'Actions' → 'Security' → 'Modify IAM Role' to attach the previously created IAM role to the instance. Doing this will allow EC2 instance to access our s3 buckets.
   
 ![Screenshot 2025-06-16 160656](https://github.com/user-attachments/assets/5b63f249-0a03-4cf3-98ca-7a281c497c43)
 
