@@ -15,6 +15,9 @@ This project is a full‑spectrum, hands‑on deployment that walks from blank A
 
 - Operational realism: separate DevOps and Secondary Engineer users, CLI credential rotation, controlled shutdown via AWS Console, and Access Analyzer validation.
 
+![project-1 architecture](https://github.com/user-attachments/assets/4c215cb5-c3fc-47af-bcc4-ddee435ff8d1)
+
+
 
 
 
