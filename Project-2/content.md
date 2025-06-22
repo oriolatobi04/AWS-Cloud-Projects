@@ -73,10 +73,10 @@ yum install -y amazon-efs-utils httpd
 
 # Create and mount EFS
 mkdir -p /mnt/photos
-mount -t efs fs-0114625bfcae9cb79:/ /mnt/photos
+mount -t efs <your-efs-id>:/ /mnt/photos
 
 # Auto-mount on reboot
-echo "fs-0114625bfcae9cb79:/ /mnt/photos efs defaults,_netdev 0 0" >> /etc/fstab
+echo "<your-efs-id>:/ /mnt/photos efs defaults,_netdev 0 0" >> /etc/fstab
 
 # Replace Apache root with EFS
 rm -rf /var/www/html
