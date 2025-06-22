@@ -37,3 +37,6 @@ This highly available architecture addresses these problems by combining key AWS
 | A shared image is uploaded by a content editor | All EC2s access it instantly via EFS |
 | Traffic spikes cause latency issues | Auto Scaling expands capacity based on CPU usage |
 | All EC2s fail during a deployment | ALB redirects users to a styled error page in S3—no broken links |
+
+
+![project-2 drawio](https://github.com/user-attachments/assets/71b2e3a8-1dfa-4236-a48d-f0a57bff946c)
